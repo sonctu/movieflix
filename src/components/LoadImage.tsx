@@ -14,8 +14,10 @@ interface IProps {
 const LoadImage: FC<IProps> = ({ image, className = '' }) => {
   return (
     <LazyLoadImage
+      effect='blur'
       src={resizeImage(getPathImage(image.thumb_url || image.poster_url), '300', '300')}
       alt={image.name}
+      wrapperClassName='w-full h-full'
       className={`object-cover w-full h-full rounded-xl ${className}`}
     />
   );

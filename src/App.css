@@ -50,6 +50,7 @@ h6 {
 }
 
 /* width */
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -64,6 +65,7 @@ h6 {
 ::-webkit-scrollbar-thumb {
   background: var(--thumb-color);
   border-radius: 10px;
+  height: 100px;
 }
 
 /* Handle on hover */

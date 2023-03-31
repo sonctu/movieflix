@@ -6,7 +6,7 @@ import LoadImage from './LoadImage';
 const MovieItem: FC<IMovieItem> = ({ slug, poster_url, thumb_url, name, year }) => {
   return (
     <Link to={`/phim/${slug}/1`}>
-      <div className='relative h-full transition-all duration-300 lg:h-64 hover:scale-105'>
+      <div className='relative h-56 transition-all duration-300 sm:h-96 lg:h-64 hover:scale-105'>
         <LoadImage
           image={{
             poster_url: poster_url,

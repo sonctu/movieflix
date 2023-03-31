@@ -115,7 +115,7 @@ const WatchMovie: FC = () => {
           <div className='col-span-4 lg:col-span-1'>
             <div className='bg-transparent rounded-lg lg:px-3 lg:pb-2'>
               <div className='text-xl font-medium'>Recommended</div>
-              <div className='flex flex-wrap gap-3 my-2 lg:flex-col'>
+              <div className='flex flex-wrap gap-1.5 my-2 lg:flex-col'>
                 {!recommendedMoviesQuery.isLoading &&
                   recommendedMoviesQuery.data?.items.slice(0, 10).map((item, index) => (
                     <Link
@@ -130,7 +130,7 @@ const WatchMovie: FC = () => {
                             thumb_url: item.poster_url,
                             name: item.name,
                           }}
-                          className='transition-all duration-200 group-hover:scale-105'
+                          className='transition-all duration-300 group-hover:scale-105'
                         ></LoadImage>
                       </div>
                       <div className='flex-1 hidden text-sm transition-all duration-200 group-hover:text-primaryText lg:block'>
