@@ -8,9 +8,11 @@ import LoadImage from '~/components/LoadImage';
 import { useMoviesQuery } from '~/hooks/useMoviesQuery';
 import MainLayout from '~/layouts/MainLayout';
 import { getMovie } from '~/services/movie';
+import { useTranslation } from 'react-i18next';
 
 const WatchMovie: FC = () => {
   const { slug, episode } = useParams();
+  const { t } = useTranslation('movie');
   const { data, isLoading } = useQuery({
     queryKey: ['movie', slug],
     queryFn: () => getMovie(slug as string),
@@ -114,7 +116,7 @@ const WatchMovie: FC = () => {
           </div>
           <div className='col-span-4 lg:col-span-1'>
             <div className='bg-transparent rounded-lg lg:px-3 lg:pb-2'>
-              <div className='text-xl font-medium'>Recommended</div>
+              <div className='text-xl font-medium'>{t('Recommended')}</div>
               <div className='flex flex-wrap gap-1.5 my-2 lg:flex-col'>
                 {!recommendedMoviesQuery.isLoading &&
                   recommendedMoviesQuery.data?.items.slice(0, 10).map((item, index) => (

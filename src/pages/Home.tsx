@@ -5,10 +5,12 @@ import MovieList from '~/components/MovieList';
 import { useMoviesQuery } from '~/hooks/useMoviesQuery';
 import useQueryParams from '~/hooks/useQueryParams';
 import MainLayout from '~/layouts/MainLayout';
+import { useTranslation } from 'react-i18next';
 
 const Home: FC = () => {
   const { page } = useQueryParams();
   const navigate = useNavigate();
+  const { t } = useTranslation(['home']);
   const pageData = useMemo(() => page || '1', [page]);
   const { data, isLoading } = useMoviesQuery(pageData);
   const handlePageClick = (e: { selected: number }) => {
@@ -27,7 +29,7 @@ const Home: FC = () => {
           to={'/phim'}
           className='px-3 transition-all duration-200 select-none hover:text-primaryText'
         >
-          Xem tất cả
+          {t('See all')}
         </Link>
       </div>
       {data && <MovieList isLoading={isLoading} movieData={data}></MovieList>}

@@ -1,7 +1,14 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { locales } from '~/i18n/i18n';
 
 const Navbar: FC = () => {
+  const { t, i18n } = useTranslation(['home']);
+  const currentLanguage = locales[i18n.language as keyof typeof locales];
+  const handleChangeLanguage = (lng: 'en' | 'vi') => {
+    i18n.changeLanguage(lng);
+  };
   return (
     <div className='fixed top-0 left-0 z-50 w-full shadow-xl bg-primaryBg'>
       <div className='flex items-center justify-between px-8 py-4'>
@@ -13,13 +20,13 @@ const Navbar: FC = () => {
             to={'/'}
             className={({ isActive }) => (isActive ? 'text-primaryText' : 'text-white')}
           >
-            Trang chủ
+            {t('Home')}
           </NavLink>
           <NavLink
             to={'/phim'}
             className={({ isActive }) => (isActive ? 'text-primaryText' : 'text-white')}
           >
-            Phim
+            {t('Movie')}
           </NavLink>
         </div>
       </div>
