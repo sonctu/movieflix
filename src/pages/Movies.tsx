@@ -51,7 +51,9 @@ const Movies: FC = () => {
         >
           <div className='grid grid-cols-2 py-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-x-2 gap-y-4'>
             {data.pages.map((page) => {
-              return page?.items.map((item) => <MovieItem key={item._id} {...item}></MovieItem>);
+              return page?.items.map((item) => (
+                <MovieItem key={item._id} items={item} pathImage={page.pathImage}></MovieItem>
+              ));
             })}
           </div>
         </InfiniteScroll>

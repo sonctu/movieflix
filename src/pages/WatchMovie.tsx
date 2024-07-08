@@ -9,6 +9,7 @@ import { useMoviesQuery } from '~/hooks/useMoviesQuery';
 import MainLayout from '~/layouts/MainLayout';
 import { getMovie } from '~/services/movie';
 import { useTranslation } from 'react-i18next';
+import { getPathImage } from '~/utils/constants';
 
 const WatchMovie: FC = () => {
   const { slug, episode } = useParams();
@@ -26,7 +27,7 @@ const WatchMovie: FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [episode]);
 
-  console.log(recommendedMoviesQuery.data?.items);
+  console.log(recommendedMoviesQuery.data);
   return (
     <>
       <MainLayout>
@@ -128,8 +129,14 @@ const WatchMovie: FC = () => {
                       <div className='w-24 h-16'>
                         <LoadImage
                           image={{
-                            poster_url: item.thumb_url,
-                            thumb_url: item.poster_url,
+                            poster_url: getPathImage(
+                              recommendedMoviesQuery.data?.pathImage as string,
+                              item.poster_url,
+                            ),
+                            thumb_url: getPathImage(
+                              recommendedMoviesQuery.data?.pathImage as string,
+                              item.thumb_url,
+                            ),
                             name: item.name,
                           }}
                           className='transition-all duration-300 group-hover:scale-105'

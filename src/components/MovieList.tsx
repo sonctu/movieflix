@@ -13,7 +13,9 @@ const MovieList: FC<IProps> = ({ movieData, isLoading = false }) => {
     <div className='grid grid-cols-2 py-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-8 gap-x-2 gap-y-4'>
       {!isLoading &&
         movieData?.items.map((item) => {
-          return <MovieItem {...item} key={item._id}></MovieItem>;
+          return (
+            <MovieItem items={item} pathImage={movieData.pathImage} key={item._id}></MovieItem>
+          );
         })}
       {isLoading &&
         Array(16)

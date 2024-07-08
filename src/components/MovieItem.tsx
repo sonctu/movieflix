@@ -2,15 +2,22 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { IMovieItem } from '~/types/movie';
 import LoadImage from './LoadImage';
+import { getPathImage } from '~/utils/constants';
 
-const MovieItem: FC<IMovieItem> = ({ slug, poster_url, thumb_url, name, year }) => {
+interface IProps {
+  items: IMovieItem;
+  pathImage: string;
+}
+
+const MovieItem: FC<IProps> = ({ items, pathImage }) => {
+  const { name, slug, year, poster_url, thumb_url } = items;
   return (
     <Link to={`/phim/${slug}/1`}>
       <div className='relative h-56 transition-all duration-300 sm:h-96 lg:h-64 hover:scale-105'>
         <LoadImage
           image={{
-            poster_url: poster_url,
-            thumb_url: thumb_url,
+            poster_url: getPathImage(pathImage, poster_url),
+            thumb_url: getPathImage(pathImage, thumb_url),
             name: name,
           }}
         ></LoadImage>

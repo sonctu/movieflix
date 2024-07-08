@@ -21,6 +21,8 @@ const Home: FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pageData]);
 
+  console.log({ data });
+
   return (
     <MainLayout>
       <div className='flex items-center justify-between'>

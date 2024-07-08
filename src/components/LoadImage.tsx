@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { getPathImage, resizeImage } from '~/utils/constants';
+import { resizeImage } from '~/utils/constants';
 
 interface IProps {
   image: {
@@ -15,7 +15,7 @@ const LoadImage: FC<IProps> = ({ image, className = '' }) => {
   return (
     <LazyLoadImage
       effect='blur'
-      src={resizeImage(getPathImage(image.thumb_url || image.poster_url), '300', '300')}
+      src={resizeImage(image.thumb_url || image.poster_url, '300', '300')}
       alt={image.name}
       wrapperClassName='w-full h-full'
       className={`object-cover w-full h-full rounded-xl ${className}`}
